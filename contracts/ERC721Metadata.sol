@@ -12,7 +12,6 @@ abstract contract ERC721Metadata is ERC721, IERC721Metadata {
 
     constructor() {
         ///  Note: the ERC-165 identifier for this interface is 0x5b5e139f.
-        supportedInterfaces[0x5b5e139f] = true;
     }
 
     /// @notice A descriptive name for a collection of NFTs in this contract
@@ -27,11 +26,11 @@ abstract contract ERC721Metadata is ERC721, IERC721Metadata {
 
     /// @notice A distinct URI for a given asset. uri 반환
     /// @dev Throws if `_tokenId` is not a valid NFT.
-    function tokenURI(uint256 _tokenId) external view validToken(_tokenId) returns (string memory) {
+    function tokenURI(uint256 _tokenId) external view returns (string memory) {
         return idToUri[_tokenId];
     }
 
-    function _setTokenUri(uint256 _tokenId, string memory _uri) internal validToken(_tokenId) {
+    function _setTokenUri(uint256 _tokenId, string memory _uri) internal {
         idToUri[_tokenId] = _uri;
     }
 }
